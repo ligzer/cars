@@ -3,7 +3,7 @@ import pygame
 class Road:
     def __init__(self):
         self.rect = pygame.Rect(0,0, 180, 10)
-        self.speed = 10
+        self.speed = 36
         self.pos = pygame.Vector2(0,0)
         pass
 
