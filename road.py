@@ -26,5 +26,5 @@ class Road:
                 y += 200
             x += 300
 
-        for car in sorted(self.cars, key=lambda x: x.pos.y):
+        for car in sorted(self.cars, key=lambda car: car.pos.y):
             car.draw(screen)
