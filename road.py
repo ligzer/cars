@@ -1,11 +1,12 @@
 import pygame
 
+
 class Road:
-    def __init__(self):
+    def __init__(self, cars):
         self.rect = pygame.Rect(0,0, 180, 10)
         self.speed = 36
         self.pos = pygame.Vector2(0,0)
-        pass
+        self.cars = cars
 
     def draw(self, screen):
         x = -300
@@ -24,3 +25,6 @@ class Road:
                 pygame.draw.rect(screen, "white", rect)
                 y += 200
             x += 300
+
+        for car in sorted(self.cars, key=lambda x: x.pos.y):
+            car.draw(screen)
