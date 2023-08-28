@@ -7,6 +7,8 @@ clock = pygame.time.Clock()
 running = True
 dt = 0
 
+pygame.mixer.music.load("media/soundtrack.mpga")
+pygame.mixer.music.play(-1)
 player_pos = pygame.Vector2(screen.get_width() / 6, screen.get_height() / 2)
 car1_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 4)
 car2_pos = pygame.Vector2(screen.get_width() / 2, 3*screen.get_height() / 4)
