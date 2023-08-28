@@ -41,17 +41,17 @@ CAR10 = CarConfig('car10', pygame.Vector2(120, 0), pygame.Vector2(270, 0))
 
 class Car:
 
-    def __init__(self, car_config, pos,):
+    def __init__(self, car_config, pos, speed=720):
         self.car_config = car_config
         self.rear_rotate = 0
         self.front_rotate = 0
-        self.speed = 40
+        self.speed = speed
         self.pos = pos
         self.delta = pygame.Vector2(random.randint(-10, 10), random.randint(-10, 10))
         # self.delta = pygame.Vector2(0,0)
 
 
-    def draw(self, screen):
+    def draw(self, screen, dt):
         self.delta = self.delta.rotate(random.randint(3, 10))
         self.car_config.car_rect.center = self.pos - self.delta
 
@@ -59,8 +59,8 @@ class Car:
         screen.blit(self.car_config.car_image, self.car_config.car_rect)
 
 
-        self.rear_rotate -= self.speed
-        self.front_rotate -= self.speed - 5
+        self.rear_rotate -= self.speed * dt
+        self.front_rotate -= self.speed * dt
 
         rotated_rear_wheel = pygame.transform.rotate(self.car_config.rear_wheel, self.rear_rotate)
         rear_rect = rotated_rear_wheel.get_rect()

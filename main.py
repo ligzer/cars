@@ -34,7 +34,7 @@ if __name__ == '__main__':
         # fill the screen with a color to wipe away anything from last frame
         screen.fill("black")
 
-        traffic.draw(screen)
+        traffic.draw(screen, dt)
 
         keys = pygame.key.get_pressed()
         LIMIT = 0
