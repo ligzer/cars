@@ -3,9 +3,9 @@ import pygame
 
 class Road:
     def __init__(self, cars):
-        self.rect = pygame.Rect(0,0, 180, 10)
+        self.rect = pygame.Rect(0, 0, 180, 10)
         self.speed = 720
-        self.pos = pygame.Vector2(0,0)
+        self.pos = pygame.Vector2(0, 0)
         self.cars = cars
 
     def draw(self, screen, dt):
