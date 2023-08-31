@@ -1,6 +1,8 @@
 import pygame
 from car import Car, CAR10, CAR13, CAR2, CAR3
 from traffic import Traffic
+from control import PlayerControl
+
 pygame.init()
 screen = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
 clock = pygame.time.Clock()
@@ -24,6 +26,10 @@ player2 = Car(CAR3, player2_pos)
 traffic = Traffic([player1, player2])
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+
+    control1 = PlayerControl(player1, pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT)
+    control2 = PlayerControl(player2, pygame.K_w, pygame.K_s, pygame.K_a, pygame.K_d)
+
     while running:
         # poll for events
         # pygame.QUIT event means the user clicked X to close your window
@@ -31,46 +37,16 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 running = False
 
-        # fill the screen with a color to wipe away anything from last frame
         screen.fill("black")
-
         traffic.draw(screen, dt)
 
         keys = pygame.key.get_pressed()
-        LIMIT = 0
         if keys[pygame.K_ESCAPE]:
             running = False
-        if keys[pygame.K_LEFT]:
-            if player1.pos.y>= -LIMIT:
-                player1.pos.y -= 600 * dt
-        if keys[pygame.K_RIGHT]:
-            if player1.pos.y <= screen.get_height() + LIMIT:
-                player1.pos.y += 600 * dt
-        if keys[pygame.K_UP]:
-            if player1.pos.x <= screen.get_width() + LIMIT:
-                player1.pos.x += 300 * dt
-        if keys[pygame.K_DOWN]:
-            if player1.pos.x >= -LIMIT:
-                player1.pos.x -= 300 * dt
-        if keys[pygame.K_a]:
-            if player2.pos.y>= -LIMIT:
-                player2.pos.y -= 600 * dt
-        if keys[pygame.K_d]:
-            if player2.pos.y<= screen.get_height() + LIMIT:
-                player2.pos.y += 600 * dt
-        if keys[pygame.K_w]:
-            if player2.pos.x <= screen.get_width() + LIMIT:
-                player2.pos.x += 300 * dt
-        if keys[pygame.K_s]:
-            if player2.pos.x >= -LIMIT:
-                player2.pos.x -= 300 * dt
-
-        # flip() the display to put your work on screen
         pygame.display.flip()
-
-        # limits FPS to 60
-        # dt is delta time in seconds since last frame, used for framerate-
-        # independent physics.
         dt = clock.tick(30) / 1000
+
+        control1.control(dt, screen)
+        control2.control(dt, screen)
 
     pygame.quit()

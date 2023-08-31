@@ -33,4 +33,5 @@ class Road:
 
         for car in sorted(self.cars, key=lambda car: car.pos.y):
             car.pos.x += (car.speed - self.speed)*dt
+            car.pos.y += car.turning * dt
             car.draw(screen, dt)

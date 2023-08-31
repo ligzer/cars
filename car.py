@@ -46,6 +46,7 @@ class Car:
         self.rear_rotate = 0
         self.front_rotate = 0
         self.speed = speed
+        self.turning = 0
         self.pos = pos
         self.delta = pygame.Vector2(random.randint(-10, 10), random.randint(-10, 10))
         # self.delta = pygame.Vector2(0,0)

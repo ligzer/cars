@@ -26,7 +26,8 @@ class Traffic:
                     pygame.Vector2(random.randint(2000, 2900), random.randint(0, 1000)),
                     random.randint(0, 700))
             self.cars.append(car)
+        for car in self.cars:
+            car.turning += random.randint(-100, 100)*dt
         self.road.cars = self.players + self.cars
-
 
         self.road.draw(screen, dt)
