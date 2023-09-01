@@ -11,9 +11,9 @@ class PlayerControl:
 
     def control(self, dt, screen):
         keys = pygame.key.get_pressed()
-        LIMIT = 600
+        LIMIT = -100
 
-        if keys[self.left]  and keys[self.right]:
+        if keys[self.left] and keys[self.right]:
             self.car.turning = 0
         elif keys[self.left] and self.car.pos.y >= -LIMIT:
             self.car.turning = -600
@@ -24,9 +24,9 @@ class PlayerControl:
 
         if keys[self.up] and keys[self.down]:
             self.car.speed = 720
-        elif keys[self.up] and self.car.pos.y <= screen.get_width() + LIMIT:
+        elif keys[self.up] and self.car.pos.x <= screen.get_width() + LIMIT:
             self.car.speed = 1200
-        elif keys[self.down] and self.car.pos.y >= - LIMIT:
+        elif keys[self.down] and self.car.pos.x >= - LIMIT:
             self.car.speed = 300
         else:
             self.car.speed = 720
