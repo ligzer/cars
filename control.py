@@ -11,7 +11,7 @@ class PlayerControl:
 
     def control(self, dt, screen):
         keys = pygame.key.get_pressed()
-        LIMIT = -100
+        LIMIT = 00
 
         if keys[self.left] and keys[self.right]:
             self.car.turning = 0

@@ -41,7 +41,7 @@ CAR10 = CarConfig('car10', pygame.Vector2(120, 0), pygame.Vector2(270, 0))
 
 class Car:
 
-    def __init__(self, car_config, pos, speed=720):
+    def __init__(self, car_config, pos, speed=1720):
         self.car_config = car_config
         self.rear_rotate = 0
         self.front_rotate = 0

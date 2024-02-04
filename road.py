@@ -17,14 +17,14 @@ class Road:
 
         h = screen.get_height()
         w =screen.get_width()
-        rect = pygame.Rect(0,0, 180, 10)
+        rect = pygame.Rect(0,0, 300, 10)
         self.pos.x -= self.speed * dt
-        self.pos.x %= 300
+        self.pos.x %= 600
         splitline = pygame.Rect(0, 0, 2000, 10)
         splitline.topleft = pygame.Vector2(0, 20)
-        pygame.draw.rect(screen, "yellow", splitline)
+        pygame.draw.rect(screen, "white", splitline)
         splitline.topleft = pygame.Vector2(0, 40)
-        pygame.draw.rect(screen, "yellow", splitline)
+        pygame.draw.rect(screen, "white", splitline)
         while x <= w:
             y = 240
             while y <= h:
@@ -33,7 +33,7 @@ class Road:
                 rect.bottomleft += self.pos
                 pygame.draw.rect(screen, "white", rect)
                 y += 200
-            x += 300
+            x += 600
 
         for car in sorted(self.cars, key=lambda car: car.pos.y):
             car.pos.x += (car.speed - self.speed)*dt
