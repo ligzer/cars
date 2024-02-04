@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 
@@ -7,6 +9,8 @@ class Road:
         self.speed = 720
         self.pos = pygame.Vector2(0, 0)
         self.cars = cars
+        self.lamppost_pos = None
+        self.lamppost = pygame.transform.scale(pygame.image.load(f"media/lamppost.png"),(250, 400))
 
     def draw(self, screen, dt):
         x = -300
@@ -35,3 +39,17 @@ class Road:
             car.pos.x += (car.speed - self.speed)*dt
             car.pos.y += car.turning * dt
             car.draw(screen, dt)
+
+        if self.lamppost_pos is None:
+            if random.random() > 0.99:
+                self.lamppost_pos = pygame.Vector2(3000,  screen.get_height() )
+        else:
+            self.lamppost_pos.x -= self.speed * dt
+            rect = self.lamppost.get_rect()
+            rect.midbottom = self.lamppost_pos
+            screen.blit(self.lamppost, rect)
+            if self.lamppost_pos.x < -300:
+                self.lamppost_pos = None
+
+
+
