@@ -2,9 +2,11 @@ import random
 
 import pygame
 from road import Road
-from car import Car, CAR10, CAR13, CAR2, CAR3
+from car import Car, CAR10, CAR13, CAR2, CAR3, CAR4
 
-CARS = [CAR2, CAR3, CAR10, CAR13]
+CARS = [CAR2, CAR3, CAR10, CAR13, CAR4]
+
+
 class Traffic:
     def __init__(self, players):
         self.players = players
@@ -27,7 +29,7 @@ class Traffic:
                     random.randint(0, 700))
             self.cars.append(car)
         for car in self.cars:
-            car.turning += random.randint(-100, 100)*dt
+            car.turning += random.randint(-100, 100) * dt
         self.road.cars = self.players + self.cars
 
         self.road.draw(screen, dt)

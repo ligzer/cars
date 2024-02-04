@@ -1,5 +1,5 @@
 import pygame
-from car import Car, CAR10, CAR13, CAR2, CAR3
+from car import Car, CAR10, CAR13, CAR2, CAR3, CAR4
 from traffic import Traffic
 from control import PlayerControl
 
@@ -19,9 +19,10 @@ CAR10.prepare_images(desired_car_height)
 CAR13.prepare_images(desired_car_height)
 CAR2.prepare_images(desired_car_height)
 CAR3.prepare_images(desired_car_height)
+CAR4.prepare_images(desired_car_height)
 
 player1 = Car(CAR2, player1_pos)
-player2 = Car(CAR3, player2_pos)
+player2 = Car(CAR4, player2_pos)
 
 traffic = Traffic([player1, player2])
 # Press the green button in the gutter to run the script.
